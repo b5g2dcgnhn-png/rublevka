@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>Рублевка — автосервис в Кургане: чип-тюнинг, диагностика, шиномонтаж</title>
+  <meta name="description" content="Автосервис «Рублевка» в Кургане: прошивка и чип-тюнинг двигателей, диагностика, ремонт ходовой части, развал-схождение, шиномонтаж. Рейтинг 5 по 140 оценкам в 2ГИС. Запись онлайн.">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --gray: #F8F9FA;
+      --soft: #FFF4F0;
+      --ink: #1A1A1A;
+      --muted: #52525B;
+      --accent: #E63E11;
+      --accent-hover: #C42F08;
+      --signal: #F97316;
+      --signal-2: #DC2626;
+      --line: #E8E8EA;
+      --container: 1140px;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section { padding: 96px 0; }
+    .section--gray { background: var(--gray); }
+    [id] { scroll-margin-top: 88px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--signal);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.16; letter-spacing: -.03em; font-weight: 650; }
+    h1 { font-size: clamp(36px, 5.2vw, 62px); margin-bottom: 22px; }
+    h2 { font-size: clamp(28px, 3.4vw, 40px); margin-bottom: 16px; }
+    h3 { font-size: 18px; margin-bottom: 10px; }
+    .lead { font-size: clamp(16px, 1.7vw, 19px); color: var(--muted); max-width: 620px; }
+    .section-head { max-width: 720px; margin-bottom: 48px; }
+    .section-head .lead { margin-bottom: 0; }
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; }
+    .fineprint { font-size: 12px; line-height: 1.55; color: var(--muted); }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1.2; }
+    .brand strong { font-size: 20px; letter-spacing: -.02em; font-weight: 700; }
+    .brand span { font-size: 12px; color: var(--muted); }
+    .header-meta { display: flex; align-items: center; gap: 28px; }
+    .header-hours { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .header-hours b { color: var(--ink); font-weight: 600; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: var(--accent-hover); }
+    .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn[disabled] { opacity: .7; cursor: wait; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 84px 0 96px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .rating-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+      text-decoration: none;
+    }
+    .rating-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .rating-score svg { color: var(--accent); }
+    .rating-count { font-size: 14px; color: var(--muted); border-left: 1px solid var(--line); padding-left: 12px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { margin-top: 22px; font-size: 13px; color: var(--muted); }
+
+    .hero-media figure { margin: 0; }
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--gray);
+      aspect-ratio: 16 / 10;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-caption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 12px; color: var(--muted); }
+    .photo-caption a { color: var(--accent); text-decoration: none; }
+    .photo-caption a:hover { text-decoration: underline; }
+
+
+    /* ---------- Services ---------- */
+    .services-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 56px; }
+    .rows { border-top: 1px solid var(--line); }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+    .row span:last-child { text-align: right; white-space: nowrap; font-size: 13px; color: var(--muted); }
+    .row--price span:last-child { color: var(--ink); font-weight: 650; }
+    .block-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .block-group + .block-group { margin-top: 38px; }
+    .inline-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; }
+    .inline-list li::before { content: "—"; color: var(--signal); margin-right: 8px; }
+
+    .brands { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 32px; }
+    .brands-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+    .brands-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .brand-tag {
+      background: var(--soft);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .brand-extra { display: none; }
+    .brands-list.is-open .brand-extra { display: inline-block; }
+    .link-button {
+      border: 0;
+      background: none;
+      padding: 0;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .link-button:hover { color: var(--accent-hover); }
+
+    /* ---------- Advantages ---------- */
+    .advantages { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0; border-top: 1px solid var(--line); }
+    .advantage { padding: 28px 26px 0 0; }
+    .advantage + .advantage { border-left: 1px solid var(--line); padding-left: 26px; }
+    .advantage .num { display: block; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+    .advantage p { margin: 0; font-size: 14px; color: var(--muted); }
+    .advantage strong { color: var(--ink); font-weight: 650; }
+
+    /* ---------- Reviews ---------- */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0; border-top: 1px solid var(--line); }
+    .review { padding: 28px 32px 0 0; }
+    .review + .review { border-left: 1px solid var(--line); padding-left: 32px; }
+    .review-author { font-weight: 650; font-size: 15px; }
+    .review-date { font-size: 12px; color: var(--muted); }
+    .review-badge {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--signal-2);
+      background: var(--soft);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+    .review blockquote { margin: 16px 0 0; font-size: 14px; color: var(--ink); }
+    .reviews-footer { margin-top: 36px; font-size: 14px; }
+    .reviews-footer a { color: var(--accent); text-decoration: none; font-weight: 650; }
+    .reviews-footer a:hover { text-decoration: underline; }
+
+    /* ---------- Form ---------- */
+    .booking-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: start; }
+    .form-panel {
+      background: var(--gray);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .tabs {
+      display: inline-flex;
+      padding: 4px;
+      background: #EDEEF0;
+      border-radius: 9px;
+      gap: 4px;
+      margin-bottom: 28px;
+      max-width: 100%;
+    }
+    .tab {
+      border: 0;
+      background: transparent;
+      border-radius: 7px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .tab[aria-selected="true"] { background: var(--soft); color: var(--accent); box-shadow: inset 0 0 0 1px #FBD9CC; }
+    .fields { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field--full { grid-column: 1 / -1; }
+    .field[hidden] { display: none; }
+    .field label { font-size: 13px; font-weight: 600; }
+    .field label .req { color: var(--accent); }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #DCDCDF;
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 11px 13px;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #9A9AA2; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(230,62,17,.12);
+    }
+    .form-actions { margin-top: 24px; display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .form-actions .btn { min-width: 196px; }
+    .form-status { margin-top: 16px; font-size: 14px; min-height: 22px; }
+    .form-status[data-type="success"] { color: #15803D; }
+    .form-status[data-type="error"] { color: var(--signal-2); }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.45);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .contacts-title { margin-bottom: 24px; }
+    .contact-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .contact-list li { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .contact-list .k { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .contact-list .v { font-size: 15px; text-decoration: none; }
+    a.v:hover { color: var(--accent); }
+    .contact-channels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .channel {
+      font-size: 13px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 6px 11px;
+    }
+    .channel:hover { border-color: var(--accent); color: var(--accent); }
+
+    .map-wrap { margin-top: 64px; }
+    .map-frame { width: 100%; height: 420px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: block; background: var(--gray); }
+    .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .map-caption { margin-top: 12px; font-size: 13px; color: var(--muted); }
+    .map-caption a { color: var(--accent); text-decoration: none; }
+    .map-caption a:hover { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { border-top: 1px solid var(--line); padding: 30px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; font-size: 13px; color: var(--muted); }
+    .footer-inner a { color: var(--accent); text-decoration: none; }
+    .footer-inner a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .section { padding: 72px 0; }
+      .hero { padding: 56px 0 72px; }
+      .hero-grid, .services-grid, .booking-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero-media { max-width: 640px; }
+      .advantages { grid-template-columns: repeat(2, minmax(0,1fr)); row-gap: 28px; }
+      .advantage + .advantage { border-left: 0; padding-left: 0; }
+      .advantage:nth-child(even) { border-left: 1px solid var(--line); padding-left: 26px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review, .review + .review { border-left: 0; padding: 24px 0; border-bottom: 1px solid var(--line); }
+      .review:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 620px) {
+      .container { padding: 0 18px; }
+      .header-inner { min-height: 68px; }
+      .header-hours { display: none; }
+      .btn { min-height: 44px; padding: 0 16px; font-size: 14px; }
+      .header-inner .btn { padding: 0 14px; }
+      h1 { font-size: 34px; }
+      .section { padding: 60px 0; }
+      .fields { grid-template-columns: 1fr; }
+      .form-panel { padding: 22px 18px; }
+      .tabs { display: flex; width: 100%; }
+      .tab { flex: 1 1 50%; padding: 10px 8px; font-size: 13px; white-space: normal; text-align: center; }
+      .advantages { grid-template-columns: 1fr; }
+      .advantage:nth-child(even) { border-left: 0; padding-left: 0; }
+      .advantage { padding: 22px 0 0; }
+      .map-frame { height: 340px; }
+      .rating-line { margin-bottom: 26px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Рублевка — автосервис в Кургане, наверх">
+        <strong>Рублевка</strong>
+        <span>Автосервис · Курган</span>
+      </a>
+      <div class="header-meta">
+        <div class="header-hours">Пн–пт <b>09:00–18:00</b> · сб <b>09:00–15:00</b> · вс выходной</div>
+        <a class="btn btn--primary" href="#booking" data-scroll>Записаться</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Первый экран -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Легковой автосервис · Курган</p>
+          <h1>Прошивка и чип-тюнинг двигателей</h1>
+          <p class="lead">Автосервис «Рублевка»: компьютерная диагностика, ремонт бензиновых двигателей и ходовой части, развал-схождение, сварочные работы и шиномонтаж.</p>
+
+          <a class="rating-line" href="https://2gis.ru/kurgan/firm/70000001035951213" target="_blank" rel="noopener noreferrer" aria-label="Рейтинг 5 на основе 140 оценок в 2ГИС, открыть карточку">
+            <span class="rating-score">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05 1.11-6.47-4.7-4.58 6.5-.95L12 2.6z"/></svg>
+              5
+            </span>
+            <span class="rating-count">140 оценок в 2ГИС</span>
+          </a>
+
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#booking" data-scroll>Записаться на сервис</a>
+            <a class="btn btn--ghost" href="#booking" data-scroll data-open-mode="callback">Заказать звонок</a>
+          </div>
+          <p class="hero-note">Адрес: проспект Машиностроителей, 38Б, 1 этаж.</p>
+        </div>
+
+        <div class="hero-media">
+          <figure>
+            <div class="photo-frame">
+              <img src="assets/images/main-photo.jpg" alt="Автосервис «Рублевка» в Кургане — фото из карточки 2ГИС" width="1280" height="720">
+            </div>
+            <figcaption class="photo-caption">
+              <span>Фото из карточки 2ГИС (24 фото в альбоме)</span>
+              <a href="https://2gis.ru/kurgan/gallery/firm/70000001035951213" target="_blank" rel="noopener noreferrer">Все фото ↗</a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Услуги и специализация -->
+    <section class="section section--gray" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Специализация</p>
+          <h2>Работы и цены</h2>
+        </div>
+
+        <div class="services-grid">
+          <div>
+            <div class="block-group">
+              <div class="block-label">Направления работ</div>
+              <div class="rows">
+                <div class="row"><span>Прошивка. Чип-тюнинг двигателей</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Компьютерная диагностика автомобилей</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Ремонт бензиновых двигателей</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Ремонт ходовой части автомобиля</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Развал-схождение</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Сварочные работы</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Шиномонтаж</span><span>По запросу / уточняйте при записи</span></div>
+                <div class="row"><span>Тюнинг</span><span>По запросу / уточняйте при записи</span></div>
+              </div>
+            </div>
+            <div class="block-group">
+              <div class="block-label">Шиномонтаж</div>
+              <ul class="inline-list">
+                <li>Замена колодок</li>
+                <li>Ошиповка шин</li>
+                <li>Мойка шин</li>
+                <li>Возможна запись</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="block-group">
+              <div class="block-label">Цены из карточки 2ГИС</div>
+              <div class="rows">
+                <div class="row row--price"><span>Масло моторное NGN</span><span>от 650 ₽</span></div>
+                <div class="row row--price"><span>Масло моторное ELF</span><span>от 750 ₽</span></div>
+                <div class="row row--price"><span>Масло моторное G-Energy</span><span>от 350 ₽</span></div>
+                <div class="row row--price"><span>Масло моторное Castrol</span><span>от 800 ₽</span></div>
+                <div class="row row--price"><span>Автозапчасти</span><span>от 1 ₽</span></div>
+              </div>
+              <p class="fineprint" style="margin-top:14px">Товары и услуги — реклама. Обновлено 23 декабря 2022. Информация о ценах не является публичной офертой. Индивидуальный предприниматель Арефьев Юрий Петрович.</p>
+            </div>
+            <div class="block-group">
+              <div class="block-label">Дополнительно</div>
+              <ul class="inline-list">
+                <li>Wi-Fi для клиентов</li>
+                <li>Оплата картой</li>
+                <li>Наличный расчёт</li>
+                <li>Оплата через банк</li>
+                <li>Оплата эл. кошельком</li>
+                <li>Перевод с карты</li>
+                <li>Оплата по QR-коду</li>
+                <li>Плати частями</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="brands">
+          <div class="brands-head">
+            <h3>Обслуживаемые марки авто</h3>
+            <button class="link-button" type="button" id="brands-toggle" aria-expanded="false" aria-controls="brands-list">Показать все марки</button>
+          </div>
+          <div class="brands-list" id="brands-list">
+            <span class="brand-tag">Acura</span><span class="brand-tag">Alfa Romeo</span><span class="brand-tag">Audi</span><span class="brand-tag">Bentley</span><span class="brand-tag">BMW</span><span class="brand-tag">Brilliance</span><span class="brand-tag">Bugatti</span><span class="brand-tag">BYD</span><span class="brand-tag">Cadillac</span><span class="brand-tag">Changan</span><span class="brand-tag">Chery</span><span class="brand-tag">Chevrolet</span><span class="brand-tag">Chrysler</span><span class="brand-tag">Citroen</span><span class="brand-tag">Dacia</span><span class="brand-tag">Daewoo</span><span class="brand-tag">Daihatsu</span><span class="brand-tag">Datsun</span><span class="brand-tag">Dodge</span><span class="brand-tag">Dongfeng</span><span class="brand-tag">FAW</span><span class="brand-tag">Ferrari</span><span class="brand-tag">Fiat</span><span class="brand-tag">Ford</span>
+            <span class="brand-tag brand-extra">Foton</span><span class="brand-tag brand-extra">Geely</span><span class="brand-tag brand-extra">GMC</span><span class="brand-tag brand-extra">Great Wall</span><span class="brand-tag brand-extra">Haima</span><span class="brand-tag brand-extra">Haval</span><span class="brand-tag brand-extra">Hawtai</span><span class="brand-tag brand-extra">Honda</span><span class="brand-tag brand-extra">Hummer</span><span class="brand-tag brand-extra">Hyundai</span><span class="brand-tag brand-extra">Infiniti</span><span class="brand-tag brand-extra">Isuzu</span><span class="brand-tag brand-extra">JAC</span><span class="brand-tag brand-extra">Jaguar</span><span class="brand-tag brand-extra">Jeep</span><span class="brand-tag brand-extra">Kia</span><span class="brand-tag brand-extra">Lada (ВАЗ)</span><span class="brand-tag brand-extra">Lancia</span><span class="brand-tag brand-extra">Land Rover</span><span class="brand-tag brand-extra">Lexus</span><span class="brand-tag brand-extra">Lifan</span><span class="brand-tag brand-extra">Lincoln</span><span class="brand-tag brand-extra">Luxgen</span><span class="brand-tag brand-extra">Maserati</span><span class="brand-tag brand-extra">Maxus</span><span class="brand-tag brand-extra">Mazda</span><span class="brand-tag brand-extra">Mercedes-Benz</span><span class="brand-tag brand-extra">MINI</span><span class="brand-tag brand-extra">Mitsubishi</span><span class="brand-tag brand-extra">Nissan</span><span class="brand-tag brand-extra">Opel</span><span class="brand-tag brand-extra">Peugeot</span><span class="brand-tag brand-extra">Porsche</span><span class="brand-tag brand-extra">Ravon</span><span class="brand-tag brand-extra">Renault</span><span class="brand-tag brand-extra">Rolls-Royce</span><span class="brand-tag brand-extra">Rover</span><span class="brand-tag brand-extra">Saab</span><span class="brand-tag brand-extra">SEAT</span><span class="brand-tag brand-extra">Skoda</span><span class="brand-tag brand-extra">Smart</span><span class="brand-tag brand-extra">SsangYong</span><span class="brand-tag brand-extra">Subaru</span><span class="brand-tag brand-extra">Suzuki</span><span class="brand-tag brand-extra">Tesla</span><span class="brand-tag brand-extra">Tianye</span><span class="brand-tag brand-extra">Toyota</span><span class="brand-tag brand-extra">Volkswagen</span><span class="brand-tag brand-extra">Volvo</span><span class="brand-tag brand-extra">Vortex</span><span class="brand-tag brand-extra">Zotye</span><span class="brand-tag brand-extra">ГАЗ</span><span class="brand-tag brand-extra">ЗАЗ</span><span class="brand-tag brand-extra">ТагАЗ</span><span class="brand-tag brand-extra">УАЗ</span><span class="brand-tag brand-extra">Exeed</span><span class="brand-tag brand-extra">GAC</span><span class="brand-tag brand-extra">OMODA</span><span class="brand-tag brand-extra">Sollers</span><span class="brand-tag brand-extra">Москвич</span><span class="brand-tag brand-extra">Voyah</span><span class="brand-tag brand-extra">Solaris</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Почему выбирают</p>
+          <h2>Факты из карточки 2ГИС</h2>
+        </div>
+        <div class="advantages">
+          <div class="advantage"><span class="num">01</span><p><strong>Рейтинг 5</strong> на основе 140 оценок в 2ГИС.</p></div>
+          <div class="advantage"><span class="num">02</span><p><strong>Шиномонтаж с записью:</strong> замена колодок, ошиповка и мойка шин.</p></div>
+          <div class="advantage"><span class="num">03</span><p><strong>Wi-Fi для клиентов</strong> и оплата картой, QR-кодом, банком или переводом с карты.</p></div>
+          <div class="advantage"><span class="num">04</span><p><strong>Пн–пт 09:00–18:00, сб 09:00–15:00.</strong> Рядом 3 парковки, до Авторынка 3 мин пешком (300 м).</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section section--gray" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Отзывы</p>
+          <h2>Что пишут клиенты</h2>
+          <p class="lead">Отзывы приведены дословно с карточки 2ГИС.</p>
+        </div>
+        <div class="reviews-grid">
+          <div class="review">
+            <div class="review-author">Сергей Романов</div>
+            <div class="review-date">23 июля 2026</div>
+            <span class="review-badge">Отзыв подтверждён 2ГИС</span>
+            <blockquote>Очень хорошие ребята все делают качественно.РЕКОМЕНДУЮ</blockquote>
+          </div>
+          <div class="review">
+            <div class="review-author">Дмитрий Максимов</div>
+            <div class="review-date">16 августа 2025</div>
+            <span class="review-badge">Отзыв подтверждён 2ГИС</span>
+            <blockquote>Заехал узнать смогут ли сделать сход-развал. 90% автосервисов отказывались из-за возраста автомобиля. В данном сервисе мастера согласились помочь мне. Сделали все быстро, грамотно и качественно!</blockquote>
+          </div>
+          <div class="review">
+            <div class="review-author">Елена Воронцова</div>
+            <div class="review-date">29 августа 2025</div>
+            <span class="review-badge">Отзыв подтверждён 2ГИС</span>
+            <blockquote>Высокая клиентоориентированность, очень профессиональные доброжелательные сотрудники.Быстро нашли причину проблемы, все показали, обьяснили.Оперативно устранили неполадку (доставка запчастей 30 мин., быстро установили). Сделали скидку. Рекомендую.</blockquote>
+          </div>
+        </div>
+        <p class="reviews-footer"><a href="https://2gis.ru/kurgan/firm/70000001035951213/tab/reviews" target="_blank" rel="noopener noreferrer">Все отзывы в 2ГИС ↗</a></p>
+      </div>
+    </section>
+
+    <!-- Форма и контакты -->
+    <section class="section" id="booking">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Обратная связь</p>
+          <h2>Записаться или заказать звонок</h2>
+          <p class="lead">Заявка уходит в Telegram автосервиса. Для звонка достаточно имени и телефона.</p>
+        </div>
+
+        <div class="booking-grid">
+          <div class="form-panel">
+            <div class="tabs" role="tablist" aria-label="Тип обращения">
+              <button class="tab" type="button" role="tab" id="tab-booking" aria-selected="true" aria-controls="form" data-mode="booking">Записаться на сервис</button>
+              <button class="tab" type="button" role="tab" id="tab-callback" aria-selected="false" aria-controls="form" data-mode="callback">Заказать звонок</button>
+            </div>
+
+            <form id="form" novalidate>
+              <div class="fields">
+                <div class="field">
+                  <label for="f-name">Имя <span class="req">*</span></label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required>
+                </div>
+
+                <div class="field" id="field-contact">
+                  <label for="f-contact" id="contact-label">Телефон или Telegram <span class="req">*</span></label>
+                  <input id="f-contact" name="contact" type="text" autocomplete="tel" placeholder="+7 (999) 000-00-00 или @username" required>
+                </div>
+
+                <div class="field" data-mode-field="booking">
+                  <label for="f-car">Марка и модель авто <span class="req">*</span></label>
+                  <input id="f-car" name="car" type="text" placeholder="Например, Toyota Camry">
+                </div>
+
+                <div class="field" data-mode-field="booking">
+                  <label for="f-service">Услуга <span class="req">*</span></label>
+                  <select id="f-service" name="service">
+                    <option value="">Выберите услугу</option>
+                    <option>Прошивка. Чип-тюнинг двигателей</option>
+                    <option>Компьютерная диагностика автомобилей</option>
+                    <option>Ремонт бензиновых двигателей</option>
+                    <option>Ремонт ходовой части автомобиля</option>
+                    <option>Развал-схождение</option>
+                    <option>Сварочные работы</option>
+                    <option>Шиномонтаж</option>
+                    <option>Замена колодок</option>
+                    <option>Ошиповка шин</option>
+                    <option>Мойка шин</option>
+                    <option>Тюнинг</option>
+                    <option>Масло моторное NGN</option>
+                    <option>Масло моторное ELF</option>
+                    <option>Масло моторное G-Energy</option>
+                    <option>Масло моторное Castrol</option>
+                    <option>Автозапчасти</option>
+                  </select>
+                </div>
+
+                <div class="field" data-mode-field="booking">
+                  <label for="f-date">Желаемая дата <span class="req">*</span></label>
+                  <input id="f-date" name="date" type="date">
+                </div>
+
+                <div class="field" data-mode-field="booking">
+                  <label for="f-time">Желаемое время <span class="req">*</span></label>
+                  <input id="f-time" name="time" type="time" min="09:00" max="18:00">
+                </div>
+
+                <div class="field field--full" data-mode-field="booking">
+                  <label for="f-comment">Комментарий — описание проблемы</label>
+                  <textarea id="f-comment" name="comment" placeholder="Что случилось с автомобилем"></textarea>
+                </div>
+
+                <div class="field field--full" data-mode-field="callback" hidden>
+                  <label for="f-callback-time">Удобное время для звонка или краткий вопрос</label>
+                  <input id="f-callback-time" name="callbackTime" type="text" placeholder="Например: завтра после 15:00 или вопрос по ТО">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit" id="submit-btn"><span id="submit-label">Отправить заявку</span></button>
+                <span class="small muted">Отправка через Telegram-бота сервиса</span>
+              </div>
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <aside>
+            <h3 class="contacts-title">Контакты</h3>
+            <ul class="contact-list">
+              <li><span class="k">Адрес</span><span class="v">Проспект Машиностроителей, 38Б, 1 этаж<br>Курган, 640014</span></li>
+              <li><span class="k">Филиалы</span><span class="v">В карточке 2ГИС указана одна точка</span></li>
+              <li><span class="k">Телефон (основной, WhatsApp / Viber)</span><a class="v" href="tel:+79128356665">+7 (912) 835-66-65</a></li>
+              <li><span class="k">Городской телефон из карточки</span><a class="v" href="tel:+73522556665">+7 (3522) 55-66-65</a></li>
+              <li><span class="k">E-mail</span><a class="v" href="mailto:avtorublevka@bk.ru">avtorublevka@bk.ru</a></li>
+              <li><span class="k">График работы</span><span class="v">Пн–пт 09:00–18:00<br>Сб 09:00–15:00<br>Вс — выходной</span></li>
+            </ul>
+            <div class="contact-channels">
+              <a class="channel" href="https://t.me/mironovdmitry1979" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+              <a class="channel" href="https://wa.me/79128356665" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+              <a class="channel" href="viber://chat/?number=+79128356665">Viber ↗</a>
+              <a class="channel" href="https://vk.ru/avtorublevka_kurgan" target="_blank" rel="noopener noreferrer">ВКонтакте ↗</a>
+            </div>
+          </aside>
+        </div>
+
+        <div class="map-wrap">
+          <div class="map-frame">
+            <iframe
+              title="Автосервис «Рублевка» на карте 2ГИС, Курган"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A55.477334%2C%22lon%22%3A65.323531%2C%22type%22%3A%22org%22%2C%22id%22%3A%2270000001035951213%22%7D%2C%22opt%22%3A%7B%22city%22%3A%22kurgan%22%2C%22zoom%22%3A16%2C%22details%22%3Atrue%7D%2C%22org%22%3A%2270000001035951213%22%7D"></iframe>
+          </div>
+          <p class="map-caption"><a href="https://2gis.ru/kurgan/firm/70000001035951213" target="_blank" rel="noopener noreferrer">Открыть карточку в 2ГИС ↗</a> · Проспект Машиностроителей, 38Б, Курган</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Рублевка · автосервис · Курган</span>
+      <span>Данные о сервисе, ценах и отзывах — <a href="https://2gis.ru/kurgan/firm/70000001035951213" target="_blank" rel="noopener noreferrer">карточка 2ГИС</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       НАСТРОЙКИ — заполнить перед публикацией сайта
+       ========================================================================== */
+
+    // Токен бота, полученный у @BotFather. Пока не заполнен, отправка заблокирована.
+    // Важно: токен в браузере виден всем; для реального продакшена используйте серверный прокси.
+    const TG_BOT_TOKEN = 'PASTE_BOT_TOKEN_HERE';
+
+    // ID чата/канала, куда приходят заявки (можно получить у @userinfobot).
+    const TG_CHAT_ID = 'PASTE_CHAT_ID_HERE';
+
+    // Основной телефон автосервиса из карточки 2ГИС (WhatsApp / Viber).
+    const PHONE_NUMBER = '+79128356665';
+
+    // Городской телефон из ссылки карточки 2ГИС.
+    const CITY_PHONE_NUMBER = '+73522556665';
+
+    /* ========================================================================== */
+
+    const form = document.getElementById('form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitLabel = document.getElementById('submit-label');
+    const contactInput = document.getElementById('f-contact');
+    const contactLabel = document.getElementById('contact-label');
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const modeFields = Array.from(document.querySelectorAll('[data-mode-field]'));
+    const brandsToggle = document.getElementById('brands-toggle');
+    const brandsList = document.getElementById('brands-list');
+
+    let currentMode = 'booking';
+    let isSending = false;
+
+    function setStatus(type, text) {
+      statusEl.textContent = text;
+      if (type) statusEl.setAttribute('data-type', type);
+      else statusEl.removeAttribute('data-type');
+    }
+
+    function setMode(mode) {
+      currentMode = mode === 'callback' ? 'callback' : 'booking';
+      tabs.forEach(function (tab) {
+        tab.setAttribute('aria-selected', String(tab.dataset.mode === currentMode));
+      });
+      modeFields.forEach(function (el) {
+        el.hidden = el.dataset.modeField !== currentMode;
+      });
+      contactLabel.innerHTML = currentMode === 'callback'
+        ? 'Телефон <span class="req">*</span>'
+        : 'Телефон или Telegram <span class="req">*</span>';
+      contactInput.placeholder = currentMode === 'callback'
+        ? '+7 (999) 000-00-00'
+        : '+7 (999) 000-00-00 или @username';
+      contactInput.autocomplete = currentMode === 'callback' ? 'tel' : 'off';
+      submitLabel.textContent = currentMode === 'callback' ? 'Заказать звонок' : 'Отправить заявку';
+      setStatus(null, '');
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () { setMode(tab.dataset.mode); });
+    });
+
+    document.querySelectorAll('[data-open-mode]').forEach(function (link) {
+      link.addEventListener('click', function () { setMode(link.dataset.openMode); });
+    });
+
+    document.querySelectorAll('[data-scroll]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    brandsToggle.addEventListener('click', function () {
+      const open = brandsList.classList.toggle('is-open');
+      brandsToggle.setAttribute('aria-expanded', String(open));
+      brandsToggle.textContent = open ? 'Свернуть список' : 'Показать все марки';
+    });
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function digitsOnly(value) {
+      return String(value || '').replace(/\D/g, '');
+    }
+
+    function validate(data) {
+      if (data.name.length < 2) return 'Укажите имя (минимум 2 символа).';
+
+      if (currentMode === 'booking') {
+        if (/^@/.test(data.contact)) {
+          if (!/^@[A-Za-z0-9_]{4,32}$/.test(data.contact)) return 'Проверьте Telegram: нужен формат @username.';
+        } else if (digitsOnly(data.contact).length < 10) {
+          return 'Укажите телефон полностью или Telegram в формате @username.';
+        }
+        if (!data.car) return 'Укажите марку и модель автомобиля.';
+        if (!data.service) return 'Выберите услугу.';
+        if (!data.date) return 'Укажите желаемую дату.';
+        if (data.date < new Date().toISOString().slice(0, 10)) return 'Дата не может быть раньше сегодняшней.';
+        if (!data.time) return 'Укажите желаемое время.';
+      } else {
+        if (digitsOnly(data.contact).length < 10) return 'Для звонка нужен номер телефона.';
+      }
+      return '';
+    }
+
+    function buildMessage(data) {
+      const isBooking = currentMode === 'booking';
+      const title = isBooking ? 'НОВАЯ ЗАПИСЬ В АВТОСЕРВИС' : 'ЗАПРОС ОБРАТНОГО ЗВОНКА';
+      const lines = [
+        '<b>' + title + '</b>',
+        'Автосервис: Рублевка, Курган',
+        ''
+      ];
+
+      if (isBooking) {
+        lines.push('Имя: ' + escapeHtml(data.name));
+        lines.push('Телефон / Telegram: ' + escapeHtml(data.contact));
+        lines.push('Авто: ' + escapeHtml(data.car));
+        lines.push('Услуга: ' + escapeHtml(data.service));
+        lines.push('Желаемая дата: ' + escapeHtml(data.date));
+        lines.push('Желаемое время: ' + escapeHtml(data.time));
+        if (data.comment) lines.push('Описание проблемы: ' + escapeHtml(data.comment));
+      } else {
+        lines.push('Имя: ' + escapeHtml(data.name));
+        lines.push('Телефон: ' + escapeHtml(data.contact));
+        if (data.callbackTime) lines.push('Удобное время / вопрос: ' + escapeHtml(data.callbackTime));
+      }
+
+      lines.push('', 'Отправлено: ' + new Date().toLocaleString('ru-RU'));
+      return lines.join('\n');
+    }
+
+    function configMissing() {
+      return !TG_BOT_TOKEN || TG_BOT_TOKEN.indexOf('PASTE') !== -1 ||
+             !TG_CHAT_ID || TG_CHAT_ID.indexOf('PASTE') !== -1;
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (isSending) return;
+
+      const data = {
+        name: form.elements.name.value.trim(),
+        contact: form.elements.contact.value.trim(),
+        car: form.elements.car.value.trim(),
+        service: form.elements.service.value,
+        date: form.elements.date.value,
+        time: form.elements.time.value,
+        comment: form.elements.comment.value.trim(),
+        callbackTime: form.elements.callbackTime.value.trim()
+      };
+
+      const error = validate(data);
+      if (error) {
+        setStatus('error', error);
+        return;
+      }
+
+      if (configMissing()) {
+        setStatus('error', 'Токен бота или ID чата не заполнен. Откройте index.html и замените TG_BOT_TOKEN и TG_CHAT_ID в блоке настроек в начале скрипта.');
+        return;
+      }
+
+      isSending = true;
+      submitBtn.disabled = true;
+      submitLabel.textContent = 'Отправляем…';
+      submitBtn.insertAdjacentHTML('afterbegin', '<span class="spinner" aria-hidden="true"></span>');
+      setStatus(null, '');
+
+      try {
+        const response = await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            parse_mode: 'HTML',
+            disable_web_page_preview: true,
+            text: buildMessage(data)
+          })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.description || ('HTTP ' + response.status));
+        }
+
+        form.reset();
+        setMode(currentMode);
+        setStatus('success', currentMode === 'booking'
+          ? 'Заявка отправлена. Мы свяжемся с вами в рабочие часы.'
+          : 'Запрос отправлен. Мы перезвоним в удобное время.');
+      } catch (err) {
+        setStatus('error', 'Не удалось отправить заявку: ' + err.message + '. Проверьте токен бота, ID чата и подключение к интернету.');
+      } finally {
+        isSending = false;
+        submitBtn.disabled = false;
+        const spinner = submitBtn.querySelector('.spinner');
+        if (spinner) spinner.remove();
+        submitLabel.textContent = currentMode === 'callback' ? 'Заказать звонок' : 'Отправить заявку';
+      }
+    });
+  </script>
+</body>
+</html>
